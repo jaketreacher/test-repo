@@ -9,8 +9,10 @@ script:
 - ls
 - ls ~
 - ls ~/.ssh/
+- ssh -i travis_deploy -oStrictHostKeyChecking=no $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/staging.sh
 deploy:
-- provider: script
+- skip_cleanup: true
+  provider: script
   script: bash scripts/deploy.sh staging
   on:
     branch: staging
