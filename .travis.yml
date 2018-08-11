@@ -7,6 +7,8 @@ before_install:
 - chmod 600 travis_deploy && mv travis_deploy ~/.ssh/id_rsa
 script:
 - echo "Skipping tests"
+- ls
+- ls .ssh/
 deploy:
 - provider: script
   script: bash scripts/deploy.sh staging
