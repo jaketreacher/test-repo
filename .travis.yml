@@ -1,13 +1,15 @@
 language: node_js
 node_js:
 - node
+before_install:
+- openssl aes-256-cbc -K $encrypted_9b00f5262c30_key -iv $encrypted_9b00f5262c30_iv
+  -in travis_deploy.enc -out travis_deploy -d
 deploy:
 - provider: script
-  script: bash scripts/deploy.sh
+  script: bash scripts/deploy.sh staging
   on:
     branch: staging
 - provider: script
   script: bash scripts/deploy.sh production
-before_install:
-- openssl aes-256-cbc -K $encrypted_9b00f5262c30_key -iv $encrypted_9b00f5262c30_iv
-  -in travis_deploy.enc -out travis_deploy -d
+  on:
+    branch: production
