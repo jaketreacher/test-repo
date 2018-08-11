@@ -11,4 +11,6 @@ deploy:
   skip_cleanup: true
   script: bash scripts/deploy.sh $TRAVIS_BRANCH
   on:
-    branch: staging, production
+    branch:
+      - staging
+      - production
