@@ -19,11 +19,15 @@ if [ ! -f "travis_deploy" ]; then exit 1; fi
 #                       Action                             #
 #----------------------------------------------------------#
 
+echo "One";
 if [ "$MODE" == "production" ]; then
+    echo "Two";
     ssh -i travis_deploy $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/production.sh
 elif [ "$MODE" == "staging" ]; then
+    echo "Three";
     ssh -i travis_deploy $USER@$REMOTEADDRESS 'bash -s' < scripts/staging.sh
 else
     echo "No mode selected."
     exit 1
 fi
+echo "Four";
