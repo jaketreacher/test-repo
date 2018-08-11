@@ -8,6 +8,7 @@ before_install:
 - mv travis_deploy ~/.ssh/id_rsa
 script:
 - echo "Skipping tests"
+- ssh -oStrictHostKeyChecking=no $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/staging.sh
 deploy:
 - provider: script
   script: bash scripts/deploy.sh staging
