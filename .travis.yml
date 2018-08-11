@@ -8,7 +8,6 @@ before_install:
 - ssh-keyscan -H $REMOTEADDRESS >> ~/.ssh/known_hosts
 script:
 - echo "Skipping tests"
-- ssh -i travis_deploy $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/staging.sh
 deploy:
 - provider: script
   skip_cleanup: true
