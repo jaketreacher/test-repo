@@ -6,8 +6,8 @@ before_install:
   -in travis_deploy.enc -out travis_deploy -d
 - chmod 600 travis_deploy
 - ssh-keyscan -H $REMOTEADDRESS >> ~/.ssh/known_hosts
-script:
-- echo "Skipping tests"
+install: true
+script: true
 deploy:
 - provider: script
   skip_cleanup: true
