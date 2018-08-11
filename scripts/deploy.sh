@@ -18,6 +18,9 @@ if [ ! -f "travis_deploy" ]; then exit 1; fi
 #----------------------------------------------------------#
 #                       Action                             #
 #----------------------------------------------------------#
+ls
+ls ~
+ls ~/.ssh
 
 if [ "$MODE" == "production" ]; then
     echo "Deploying: production"
