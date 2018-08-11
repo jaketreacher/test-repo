@@ -6,15 +6,18 @@ before_install:
   -in travis_deploy.enc -out travis_deploy -d
 - chmod 600 travis_deploy
 - mv travis_deploy ~/.ssh/id_rsa
+- ssh-keyscan -H $REMOTEADDRESS >> ~/.ssh/known_hosts
 script:
 - echo "Skipping tests"
 - ssh -oStrictHostKeyChecking=no $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/staging.sh
 deploy:
 - provider: script
+  skip_cleanup: true
   script: bash scripts/deploy.sh staging
   on:
     branch: staging
 - provider: script
+  skip_cleanup: true
   script: bash scripts/deploy.sh production
   on:
     branch: production
