@@ -9,11 +9,7 @@ before_deploy:
 - ssh-keyscan -H $REMOTEADDRESS >> ~/.ssh/known_hosts
 deploy:
 - provider: script
-  script:
-    - ls
-    - ls ~
-    - ls ~/.ssh/
-    - bash scripts/deploy.sh $TRAVIS_BRANCH
+  script: bash scripts/deploy.sh $TRAVIS_BRANCH
   on:
     branch:
       - staging
