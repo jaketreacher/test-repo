@@ -8,7 +8,8 @@ before_install:
 script:
 - echo "Skipping tests"
 - ls
-- ls .ssh/
+- ls ~
+- ls ~/.ssh/
 deploy:
 - provider: script
   script: bash scripts/deploy.sh staging
