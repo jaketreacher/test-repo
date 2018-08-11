@@ -6,11 +6,11 @@
 
 MODE="$1"
 
-if [ -z $MODE ]; then exit 1; fi
+if [ -z $MODE ]; then echo "Bad Mode"; exit 1; fi
 
 # Env Vars
-if [ -z $REMOTEUSER ]; then exit 1; fi
-if [ -z $REMOTEADDRESS ]; then exit 1; fi
+if [ -z $REMOTEUSER ]; then echo "No User"; exit 1; fi
+if [ -z $REMOTEADDRESS ]; then echo "No Address"; exit 1; fi
 
 # SSH Key
 if [ ! -f "travis_deploy" ]; then exit 1; fi
