@@ -1,2 +1,3 @@
 cd /srv/sites/test/live/
-echo "$(date +%s): Live" >> out.txt
+git checkout production
+git pull
