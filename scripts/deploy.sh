@@ -20,9 +20,9 @@ if [ ! -f "travis_deploy" ]; then exit 1; fi
 #----------------------------------------------------------#
 
 if [ "$MODE" == "production" ]; then
-    ssh -i travis_deploy -oStrictHostKeyChecking=no $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/production.sh
+    ssh -oStrictHostKeyChecking=no $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/production.sh
 elif [ "$MODE" == "staging" ]; then
-    ssh -i travis_deploy -oStrictHostKeyChecking=no $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/staging.sh
+    ssh -oStrictHostKeyChecking=no $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/staging.sh
 else
     echo "No mode selected."
     exit 1

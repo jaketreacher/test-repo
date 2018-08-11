@@ -5,6 +5,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_9b00f5262c30_key -iv $encrypted_9b00f5262c30_iv
   -in travis_deploy.enc -out travis_deploy -d
 - chmod 600 travis_deploy
+- mv travis_deploy ~/.ssh/id_rsa
 script:
 - echo "Skipping tests"
 deploy:
