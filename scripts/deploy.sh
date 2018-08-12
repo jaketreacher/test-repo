@@ -18,10 +18,10 @@ if [ -z $REMOTEADDRESS ]; then echo "No Address"; exit 1; fi
 
 if [ "$MODE" == "production" ]; then
     echo "Deploying: production"
-    ssh -i ~/.ssh/id_rsa $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/production.sh
+    ssh $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/production.sh
 elif [ "$MODE" == "staging" ]; then
     echo "Deploying: staging"
-    ssh -i ~/.ssh/id_rsa $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/staging.sh
+    ssh $REMOTEUSER@$REMOTEADDRESS 'bash -s' < scripts/staging.sh
 else
     echo "No mode selected."
     exit 1
