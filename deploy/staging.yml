@@ -1,0 +1,20 @@
+---
+- name: Push PAAS Staging
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Pull Git updates
+      git:
+        repo: 'https://github.com/jaketreacher/test-repo.git'
+        dest: /srv/sites/test/staging
+        version: staging
+      notify:
+        - restart nginx
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+

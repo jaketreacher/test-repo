@@ -1,0 +1,5 @@
+hamlet.get-server.com
+
+[all:vars]
+remote_user=ubuntu
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'

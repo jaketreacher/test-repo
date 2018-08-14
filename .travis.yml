@@ -6,11 +6,13 @@ before_deploy:
   -in travis_deploy.enc -out travis_deploy -d
 - chmod 600 travis_deploy
 - mv travis_deploy ~/.ssh/id_rsa
-- ssh-keyscan -H $REMOTEADDRESS >> ~/.ssh/known_hosts
+- apt-get install software-properties-common -y
+- apt-add-repository ppa:ansible/ansible -y
+- apt-get update
+- apt-get install ansible -y
 deploy:
 - provider: script
-  script: bash scripts/deploy.sh $TRAVIS_BRANCH
+  script: ansible-playbook -i deploy/inventory deploy/${TRAVIS_BRANCH}.yml
   on:
     branch:
       - staging
-      - production
