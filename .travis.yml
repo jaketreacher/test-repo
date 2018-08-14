@@ -13,7 +13,7 @@ before_deploy:
 - sudo apt-get install ansible -y
 deploy:
 - provider: script
-  script: ansible-playbook -i deploy/inventory deploy/${TRAVIS_BRANCH}.yml -vvvv
+  script: ansible-playbook -i deploy/inventory deploy/${TRAVIS_BRANCH}.yml
   on:
     branch:
       - staging
