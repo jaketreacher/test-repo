@@ -7,10 +7,10 @@ before_deploy:
   -in travis_deploy.enc -out travis_deploy -d
 - chmod 600 travis_deploy
 - mv travis_deploy ~/.ssh/id_rsa
-- apt-get install software-properties-common -y
-- apt-add-repository ppa:ansible/ansible -y
-- apt-get update
-- apt-get install ansible -y
+- sudo apt-get install software-properties-common -y
+- sudo apt-add-repository ppa:ansible/ansible -y
+- sudo apt-get update
+- sudo apt-get install ansible -y
 deploy:
 - provider: script
   script: ansible-playbook -i deploy/inventory deploy/${TRAVIS_BRANCH}.yml
